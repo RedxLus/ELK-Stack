@@ -17,15 +17,16 @@ read newhn
 sudo hostnamectl set-hostname ${newhn}
 sudo sed -i "s/${lasthn}/${newhn}/g" /etc/hosts
 
+echo ""
 echo "===== ENG ====="
 echo "Finish. Please check the file:"
 echo " cat /etc/hosts"
 echo "And check if we change correctly the hostname running this command:"
-echo " hostnameclt"
+echo " hostnamectl"
 echo ""
 echo ""
 echo "===== ESP ====="
 echo "Terminado. Por favor revise el archivo:"
 echo " cat /etc/hosts"
 echo "Y compruebe si está correcto el hostname ejecutando este comando:"
-echo " hostnameclt"
+echo " hostnamectl"
