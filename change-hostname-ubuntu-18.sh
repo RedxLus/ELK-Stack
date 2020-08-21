@@ -1,16 +1,31 @@
 #!/bin/bash
 
-lasthostname=$(hostname)
+# Script var
+lasthn=$(hostname)
 
-echo "Remember need sudo."
-echo "enter new hostname to this machine and press enter:"
+# Need to be run as sudo
+if ! [ $(id -u) = 0 ]; then
+    echo "El script debe ejecutarse como root." >&2
+    echo "The script need to be run as root." >&2
+    exit 1
+fi
+
+echo "Ingrese el nuevo hostname para esta máquina y presione enter:"
+echo "Enter new hostname to this machine and press enter:"
 read newhn
 
 sudo hostnamectl set-hostname ${newhn}
+sudo sed -i "s/${lasthn}/${newhn}/g" /etc/hosts
 
-sudo sed -i "s/${lasthostname}/${newhn}/g" /etc/hosts
-
-echo "Finish. We changed this file, please check:"
-echo "/etc/hosts"
-echo "Check if we change correctly the hostname running this command:"
-echo "hostnameclt"
+echo "===== ENG ====="
+echo "Finish. Please check the file:"
+echo " cat /etc/hosts"
+echo "And check if we change correctly the hostname running this command:"
+echo " hostnameclt"
+echo ""
+echo ""
+echo "===== ESP ====="
+echo "Terminado. Por favor revise el archivo:"
+echo " cat /etc/hosts"
+echo "Y compruebe si está correcto el hostname ejecutando este comando:"
+echo " hostnameclt"
